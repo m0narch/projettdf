@@ -1,7 +1,7 @@
 </div>
 
 <div id="bas">
-Tutoriel réalisé par Savageman.
+Bas de page !
 </div>
 
 </body>

@@ -6,7 +6,6 @@
 <li><a href="index.php">Accueil</a></li>
 </ul>
 
-(rien pour le moment)
 
 </div>
 

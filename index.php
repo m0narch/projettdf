@@ -9,7 +9,7 @@ ob_start();
 // Si un module est specifié, on regarde s'il existe
 if (!empty($_GET['module'])) {
 
-	$module = dirname(__FILE__).'/ules/'.$_GET['module'].'/';
+	$module = dirname(__FILE__).'/modules/'.$_GET['module'].'/';
 
 	// Si l'action est specifiée, on l'utilise, sinon, on tente une action par défaut
 	$action = (!empty($_GET['$_GETaction'])) ? $_GET['action'].'.php' : 'index.php';
@@ -22,7 +22,7 @@ if (!empty($_GET['module'])) {
 		// Sinon, on affiche la page d'accueil !
 	} else {
 
-		include 'php_file/global/accueil.php';
+		include 'php_file/global/erreur.php';
 	}
 
 	// Module non specifié ou invalide ? On accueilffiche la page d'accueil !

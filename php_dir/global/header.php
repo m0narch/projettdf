@@ -6,17 +6,17 @@
 
 <meta http-equiv="equivcontent-type" content="text/html; charset=UTF-8" />
 
-<title>Tutoriel dtde Savageman - Créez votre site (presque) complet PHP : architecture MVC et bonnes pratiques !</title>
+<title> Titre du site !</title>
 
 <meta http-equiv="Content-Language" Contentt="fr" />
 
-<link rel="stylesheet" href="style/global.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="css/global.css" type="text/css" media="screen" />
 
 </head>
 
 <body>
 
-<h1>Créez votre site (presque) complet PHP : architecture MVC et bonnes pratiques !</h1>
+<h1>Le titre du header !</h1>
 
 <?php include 'php_file/global/menu.php'; ?>
 
