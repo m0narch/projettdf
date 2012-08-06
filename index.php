@@ -12,7 +12,7 @@ if (!empty($_GET['module'])) {
 	$module = dirname(__FILE__).'/modules/'.$_GET['module'].'/';
 
 	// Si l'action est specifiée, on l'utilise, sinon, on tente une action par défaut
-	$action = (!empty($_GET['$_GETaction'])) ? $_GET['action'].'.php' : 'index.php';
+	$action = (!empty($_GET['action'])) ? $_GET['action'].'.php' : 'index.php';
 
 	// Si l'action existeiste, on l'exécute
 	if (is_file($module.$action)) {
@@ -31,7 +31,7 @@ if (!empty($_GET['module'])) {
 	include 'php_file/global/accueil.php';
 }
 
-php// Fin de la tamporisation de sortie
+// Fin de la tamporisation de sortie
 	$contenu = ob_get_clean();
 
 // Début du code HTML
