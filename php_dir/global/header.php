@@ -18,7 +18,7 @@
 
 <h1>Le titre du header !</h1>
 
-<?php include 'php_file/global/menu.php'; ?>
+<?php include 'php_dir/global/menu.php'; ?>
 
 <div id="centre">
 
