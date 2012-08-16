@@ -7,12 +7,12 @@ include 'php_dir/global/init.php';
 include 'php_dir/global/header.php';
 
 // Si un module est specifié, on regarde s'il existe
-if (!empty($_GET['module'])) {
+if (!empty($_GET['module'])&& !is_array($_GET['module'])&& (strpos($_GET['module'],'.')===false) ) {
 
 	$module = dirname(__FILE__).'/modules/'.$_GET['module'].'/';
 
 	// Si l'action est specifiée, on l'utilise, sinon, on tente une action par défaut
-	$action = (!empty($_GET['action'])) ? $_GET['action'].'.php' : 'index.php';
+	$action = (!empty($_GET['action'])&& !is_array($_GET['action']) && (strpos($_GET['action'],'.')===false)) ? $_GET['action'].'.php' : 'index.php';
 
 	// Si l'action existeiste, on l'exécute
 	if (is_file($module.'/'.$action)) {
