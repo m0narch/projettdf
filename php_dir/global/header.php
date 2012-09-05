@@ -16,7 +16,7 @@
 
 <body>
 
-<h1>Le titre du header !</h1>
+   <h1>Le titre du AZEAZ12æ«ðæ«ðader !</h1>
 
 <?php include 'php_dir/global/menu.php'; ?>
 
