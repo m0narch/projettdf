@@ -10,7 +10,7 @@ h1, h2, h3, h4, h5, h56{
 }
 h1
 {
-	background-color: #1166ff;
+	background-color: #ABCDEF;
 	padding: 0.5em;
 }
 h2, h3, h4, h5, h6
@@ -23,7 +23,8 @@ h2, h3, h4, h5, h6
 	float: left;
 	width: 18%;
 	margin: 0em 1em 1em;
-	padding: 1em;background-color: #22ff37;
+	padding: 1em;
+	background-color: #ABCDEF;
 }
 #centre
 {
@@ -35,7 +36,7 @@ h2, h3, h4, h5, h6
 {
 	clear: both;
 	padding: 1em;
-	background-color: #3366ff;
+	background-color: #FEDCBA;
 }
 label
 {
@@ -53,3 +54,8 @@ table, tr, td, th
 	border: 1px solid black;
 }
 
+
+.error-message{
+	color:red;
+	font-weight:bold;
+}

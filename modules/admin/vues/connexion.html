@@ -1,0 +1,12 @@
+<style>
+   form, p, table, tr
+   {
+		 text-align: center;
+   }
+</style>
+
+<form action="<?php echo $_SERVER['PHP_SELF']."?module=admin&action="; ?>"  method="post" >
+   <input type="text"  name="login" placeholder="login" />
+   <input type="password"  name="mdp" placeholder="password" />
+   <input type="submit" />
+</form>

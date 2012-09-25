@@ -1,9 +1,10 @@
 </div>
 
 <div id="bas">
-Bas de page !
+   <a href="?module=admin&action=index">Connexion</a>
 </div>
 
+<?php     FermerConnexion($conn);?>
 </body>
 
 </html>

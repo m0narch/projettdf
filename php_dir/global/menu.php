@@ -5,6 +5,7 @@
 <ul>
 <li><a href="index.php">Accueil</a></li>
 <li><a href="index.php?module=coureur">Coureur</a></li>
+<li><a href="index.php?module=pays">Pays</a></li>
 <li><a href="index.php">...</a></li>
 </ul>
 

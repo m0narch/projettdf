@@ -3,8 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
 
 <head>
-
-<meta http-equiv="equivcontent-type" content="text/html; charset=UTF-8" />
+<script type="text/javascript" language="Javascript" src="js/jquery.js"></script>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 
 <title> Titre du site !</title>
 

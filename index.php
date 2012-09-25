@@ -1,4 +1,5 @@
 <?php
+   session_start();
 
 // Initialisation
 include 'php_dir/global/init.php';
