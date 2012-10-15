@@ -6,7 +6,7 @@
 <script type="text/javascript" language="Javascript" src="js/jquery.js"></script>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 
-<title> Titre du site !</title>
+<title> Projet PHP iut </title>
 
 <meta http-equiv="Content-Language" Contentt="fr" />
 
@@ -16,7 +16,7 @@
 
 <body>
 
-   <h1>Le titre du AZEAZ12æ«ðæ«ðader !</h1>
+   <h1>Mise à jour de la base oracle</h1>
 
 <?php include 'php_dir/global/menu.php'; ?>
 

@@ -1,4 +1,5 @@
 <?php
+
    function replaceNom($chaine)
    {
 	  $str=trim($chaine);
@@ -167,27 +168,21 @@
 			$str = $first_letter . $str_end;
 			return $str;
 		 }
-
-
-
-
-		 function insertion_coureur($conn,$n_coureur, $nom, $prenom, $code_tdf, $annee_tdf, $annee_naissance)
+		 
+		 function insertion_directeur($conn,$n_directeur, $nom, $prenom)
 		 {
 			if(empty($conn))
 			{
 			   return false;
 			}
-			$cur = oci_parse($conn,'insert into tdf_coureur(n_coureur, nom, prenom, code_tdf, annee_tdf, annee_naissance,compte_oracle,date_insert) values (:n_coureur, upper(:nom), :prenom, :code_tdf, :annee_tdf, :annee_naissance,\'ETU2_42\',sysdate)');
+			$cur = oci_parse($conn,'insert into tdf_directeur(n_directeur, nom, prenom,compte_oracle,date_insert) values (:n_directeur, upper(:nom), :prenom, \'ETU2_42\',sysdate)');
 			if (!$cur)
 			{
 			   return false;
 			}
-			oci_bind_by_name($cur, ":n_coureur", $n_coureur);
+			oci_bind_by_name($cur, ":n_directeur", $n_directeur);
 			oci_bind_by_name($cur, ":nom", $nom);
 			oci_bind_by_name($cur, ":prenom", $prenom);
-			oci_bind_by_name($cur, ":code_tdf", $code_tdf);
-			oci_bind_by_name($cur, ":annee_tdf", $annee_tdf);
-			oci_bind_by_name($cur, ":annee_naissance", $annee_naissance);
 			if(!oci_execute($cur, OCI_DEFAULT))
 			{
 			   return false;
@@ -201,20 +196,19 @@
 		 }
 
 
-		 function coureur_exist($conn,$prenom, $nom, $code_tdf)
+		 function directeur_exist($conn, $nom,$prenom)
 		 {
 			if(empty($conn))
 			{
 			   return NULL;
 			}
-			$cur = oci_parse($conn,'select 1 from tdf_coureur where nom = :nom and prenom = :prenom and code_tdf = :code');
+			$cur = oci_parse($conn,'select 1 from tdf_directeur where nom = :nom and prenom = :prenom ');
 			if (!$cur)
 			{
 			   return NULL;
 			}
 			oci_bind_by_name($cur, ":nom", $nom);
 			oci_bind_by_name($cur, ":prenom", $prenom);
-			oci_bind_by_name($cur, ":code", $code_tdf);
 			if(!oci_execute($cur, OCI_DEFAULT))
 			{
 			   return NULL;
@@ -227,13 +221,13 @@
 			return true;
 		 }
 
-		 function max_n_coureur($conn)
+		 function max_n_directeur($conn)
 		 {
 			if(empty($conn))
 			{
 			   return NULL;
 			}
-			$cur = oci_parse($conn,'select max(n_coureur)+5 as N_COUREUR from tdf_coureur');
+			$cur = oci_parse($conn,'select max(n_directeur)+1 as N_DIRECTEUR from tdf_directeur');
 			if (!$cur)
 			{
 			   return NULL;
@@ -252,52 +246,10 @@
 
 		 }
 
-		 function verifDateNaissance($date)
-		 {
-
-			$date_actuelle=date('Y');
-			if(preg_match('#[12][0-9]{3}#',$date))
-			{
-			   if(($date_actuelle-$date)>=17)
-			   {
-				  return true;
-			   }
-			   else
-			   return false;
-			}
-			return false;
-		 }
-
-		 function verifDateTDF($date)
-		 {
-			$date_actuelle=date('Y');
-			if(preg_match('#[12][0-9]{3}#',$date))
-			{
-			   if(($date>=1903)&&(($date_actuelle-$date)>=0))
-			   {
-				  return true;
-			   }
-			}
-			return false;
-		 }
-
-		 function verifDateNaissanceTDF($date1,$date2)
-		 {
-			if(preg_match('#[12][0-9]{3}#',$date1))
-			{
-			   if(preg_match('#[12][0-9]{3}#',$date2))
-			   {
-				  if(($date1-$date2)>=17)
-				  {
-					 return true;
-				  }
-			   }
-			}
-			return false;
-		 }
-   function listingCoureur($conn)
+		
+   function listingDirecteur($conn)
    {
-	  $re = ExecuterRequete($conn,"select n_coureur,nom,prenom,code_tdf,annee_naissance,annee_tdf from tdf_coureur");
+	  $re = ExecuterRequete($conn,"select * from tdf_directeur ");
 	 AfficherDonnee($re);
    }
 
