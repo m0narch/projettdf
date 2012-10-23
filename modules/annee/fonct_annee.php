@@ -11,14 +11,14 @@
 	  }
 	  return false;
    }
-   
+
    function insertion_annee($conn,$annee,$jours_repos)
    {
 	  if(empty($conn))
 	  {
 		 return false;
 	  }
-	  $cur = oci_parse($conn,'insert into tdf_annee(annee,jour_repos,compte_oracle,date_insert) values (:annee, :jours_repos,\'ETU2_42\',sysdate)');
+	  $cur = oci_parse($conn,'insert into '.TDF_ANNEE.'(annee,jour_repos,compte_oracle,date_insert) values (:annee, :jours_repos,\'ETU2_42\',sysdate)');
 	  if (!$cur)
 	  {
 		 return false;
@@ -43,7 +43,7 @@
 	  {
 		 return NULL;
 	  }
-	  $cur = oci_parse($conn,'select 1 from tdf_annee where annee = :annee');
+	  $cur = oci_parse($conn,'select 1 from '.TDF_ANNEE.' where annee = :annee');
 	  if (!$cur)
 	  {
 		 return NULL;
@@ -63,7 +63,7 @@
 
    function listingAnnee($conn)
    {
-	  $re = ExecuterRequete($conn,"select * from tdf_annee order by annee desc");
+	  $re = ExecuterRequete($conn,"select * from  ".TDF_ANNEE." order by annee desc");
 	 AfficherDonnee($re);
    }
 ?>

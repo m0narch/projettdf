@@ -75,42 +75,6 @@
 		 return false;
 	  }
    }
-
-   function strToNoAccentNom($var)
-   {
-	  $var = str_replace(
-		 array(
-			'à', 'â', 'ä', 'á', 'ã', 'å',
-			'î', 'ï', 'ì', 'í',
-			'ô', 'ö', 'ò', 'ó', 'õ', 'ø',
-			'ù', 'û', 'ü', 'ú',
-			'é', 'è', 'ê', 'ë',
-			'ç', 'ÿ', 'ñ',
-			'À', 'Â', 'Ä', 'Á', 'Ã', 'Å',
-			'Î', 'Ï', 'Ì', 'Í',
-			'Ô', 'Ö', 'Ò', 'Ó', 'Õ', 'Ø',
-			'Ù', 'Û', 'Ü', 'Ú',
-			'É', 'È', 'Ê', 'Ë',
-			'Ç', 'Ÿ', 'Ñ', 'ý', 'Ý',
-			'æ', 'œ', 'š', 'Š'
-		 ),
-		 array(
-			'a', 'a', 'a', 'a', 'a', 'a',
-			'i', 'i', 'i', 'i',
-			'o', 'o', 'o', 'o', 'o', 'o',
-			'u', 'u', 'u', 'u',
-			'e', 'e', 'e', 'e',
-			'c', 'y', 'n',
-			'A', 'A', 'A', 'A', 'A', 'A',
-			'I', 'I', 'I', 'I',
-			'O', 'O', 'O', 'O', 'O', 'O',
-			'U', 'U', 'U', 'U',
-			'E', 'E', 'E', 'E',
-			'C', 'Y', 'N', 'y', 'Y',
-			'AE', 'OE', 's', 'S'
-		 ),$var);
-		 return $var;
-	  }
 	  function strToNoAccentPrenom($var)
 	  {
 		 $var = str_replace(
@@ -168,14 +132,14 @@
 			$str = $first_letter . $str_end;
 			return $str;
 		 }
-		 
+
 		 function insertion_directeur($conn,$n_directeur, $nom, $prenom)
 		 {
 			if(empty($conn))
 			{
 			   return false;
 			}
-			$cur = oci_parse($conn,'insert into tdf_directeur(n_directeur, nom, prenom,compte_oracle,date_insert) values (:n_directeur, upper(:nom), :prenom, \'ETU2_42\',sysdate)');
+			$cur = oci_parse($conn,'insert into '.TDF_DIRECTEUR.' (n_directeur, nom, prenom,compte_oracle,date_insert) values (:n_directeur, upper(:nom), :prenom, \'ETU2_42\',sysdate)');
 			if (!$cur)
 			{
 			   return false;
@@ -202,7 +166,7 @@
 			{
 			   return NULL;
 			}
-			$cur = oci_parse($conn,'select 1 from tdf_directeur where nom = :nom and prenom = :prenom ');
+			$cur = oci_parse($conn,'select 1 from '.TDF_DIRECTEUR.'  where nom = :nom and prenom = :prenom ');
 			if (!$cur)
 			{
 			   return NULL;
@@ -227,7 +191,7 @@
 			{
 			   return NULL;
 			}
-			$cur = oci_parse($conn,'select max(n_directeur)+1 as N_DIRECTEUR from tdf_directeur');
+			$cur = oci_parse($conn,'select max(n_directeur)+1 as N_DIRECTEUR from '.TDF_DIRECTEUR.'');
 			if (!$cur)
 			{
 			   return NULL;
@@ -246,10 +210,10 @@
 
 		 }
 
-		
+
    function listingDirecteur($conn)
    {
-	  $re = ExecuterRequete($conn,"select * from tdf_directeur ");
+	  $re = ExecuterRequete($conn,"select * from ".TDF_DIRECTEUR);
 	 AfficherDonnee($re);
    }
 

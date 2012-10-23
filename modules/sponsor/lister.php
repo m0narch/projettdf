@@ -1,5 +1,5 @@
 <?php
-   include_once 'modules/annee/fonct_sponsor.php';
+   include_once 'modules/sponsor/fonct_sponsor.php';
    listingSponsor($conn);
 ?>
 

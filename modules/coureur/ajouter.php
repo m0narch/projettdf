@@ -17,7 +17,6 @@
 		 else
 			$err_coureur=1;
 	  }
-
 	  if(!empty($_POST['annee_tdf']))
 	  {
 		 if(verifDateTDF($_POST['annee_tdf']))
@@ -34,7 +33,7 @@
 			$err_coureur=3;
 		 }
 	  }
-	  if(!verifNom($name_coureur))
+	  if(!verifNomCoureur($name_coureur))
 	  {
 		 echo '[-] Erreur lors de l\'ajout ! </br>';
 		 echo '[-] Le nom est invalide. </br>';
@@ -49,12 +48,12 @@
 		 echo '[-] Erreur lors de l\'ajout ! </br>';
 		 echo "[-] Le pays n'existe pas. </br>";
 	  }
-	  elseif(coureur_exist($conn,formatPrenom($firstname_coureur), formatNom($name_coureur),$c_pays))
+	  elseif(coureur_exist($conn,formatPrenom($firstname_coureur), formatNomCoureur($name_coureur),$c_pays))
 	  {
 		 echo '[-] Erreur lors de l\'ajout ! </br>';
 		 echo '[-] Coureur déjà présent dans la base. </br>';
 	  }
-	  elseif( $err_coureur==0 and insertion_coureur($conn,max_n_coureur($conn),formatNom($name_coureur), formatPrenom($firstname_coureur), $c_pays, $_POST['annee_tdf'],$_POST['annee_naissance']) )
+	  elseif( $err_coureur==0 and insertion_coureur($conn,max_n_coureur($conn),formatNomCoureur($name_coureur), formatPrenom($firstname_coureur), $c_pays, $_POST['annee_tdf'],$_POST['annee_naissance']) )
 	  {
 		 echo '[+] Le coureur à été inseré dans la base. </br>';
 	  }
