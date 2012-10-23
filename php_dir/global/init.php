@@ -25,6 +25,7 @@
    define("TDF_TEMPS",'tdf_temps2');
    define("TDF_EPREUVE",'tdf_epreuve2');
    define("TDF_EQUIPE_ANNEE",'tdf_equipe_annee2');
+   define("TDF_EQUIPE",'tdf_equipe2');
    define("TDF_DIRECTEUR",'tdf_directeur2');
    define("TDF_PAYS",'tdf_pays2');
 

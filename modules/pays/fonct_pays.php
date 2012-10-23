@@ -2,7 +2,7 @@
 
    function formPays($conn)
    {
-	  $req='SELECT code_tdf,nom FROM tdf_pays ORDER BY code_tdf';
+	  $req='SELECT code_tdf,nom FROM '.TDF_PAYS.' ORDER BY code_tdf';
 	  $cur=ExecuterRequete($conn,$req);
 	  setPaysForm($cur);
    }
@@ -70,133 +70,133 @@
 	  }
    }
 
-	  function PaysExiste($conn,$code_tdf)
+   function PaysExiste($conn,$code_tdf)
+   {
+	  if(empty($conn))
 	  {
-		 if(empty($conn))
-		 {
-			return false;
-		 }
-		 $cur = oci_parse($conn,'select 1 from '.TDF_PAYS.' where upper(code_tdf) = upper(:code)');
-		 if (!$cur)
-		 {
-			return false;
-		 }
-		 oci_bind_by_name($cur, ":code", $code_tdf);
-		 if(!oci_execute($cur, OCI_DEFAULT))
-		 {
-			return false;
-		 }
-		 $tab = oci_fetch_array ($cur , 0);
-		 if($tab == false)
-		 {
-			return false;
-		 }
-		 return true;
+		 return false;
 	  }
+	  $cur = oci_parse($conn,'select 1 from '.TDF_PAYS.' where upper(code_tdf) = upper(:code)');
+	  if (!$cur)
+	  {
+		 return false;
+	  }
+	  oci_bind_by_name($cur, ":code", $code_tdf);
+	  if(!oci_execute($cur, OCI_DEFAULT))
+	  {
+		 return false;
+	  }
+	  $tab = oci_fetch_array ($cur , 0);
+	  if($tab == false)
+	  {
+		 return false;
+	  }
+	  return true;
+   }
 
-	  function PaysPresent($conn,$code_tdf,$code_pays,$nom)
+   function PaysPresent($conn,$code_tdf,$code_pays,$nom)
+   {
+	  if(empty($conn))
 	  {
-		 if(empty($conn))
-		 {
-			return false;
-		 }
-		 $cur = oci_parse($conn,'select 1 from '.TDF_PAYS.' where upper(code_tdf) = upper(:code) and upper(c_pays)=upper(:code_pays) and upper(nom) = upper(:nom)');
-		 if (!$cur)
-		 {
-			return false;
-		 }
-		 oci_bind_by_name($cur, ":code", $code_tdf);
-		 oci_bind_by_name($cur, ":code_pays", $code_pays);
-		 oci_bind_by_name($cur, ":nom", $nom);
-		 if(!oci_execute($cur, OCI_DEFAULT))
-		 {
-			return false;
-		 }
-		 $tab = oci_fetch_array ($cur , 0);
-		 if($tab == false)
-		 {
-			return false;
-		 }
-		 return true;
+		 return false;
 	  }
+	  $cur = oci_parse($conn,'select 1 from '.TDF_PAYS.' where upper(code_tdf) = upper(:code) and upper(c_pays)=upper(:code_pays) and upper(nom) = upper(:nom)');
+	  if (!$cur)
+	  {
+		 return false;
+	  }
+	  oci_bind_by_name($cur, ":code", $code_tdf);
+	  oci_bind_by_name($cur, ":code_pays", $code_pays);
+	  oci_bind_by_name($cur, ":nom", $nom);
+	  if(!oci_execute($cur, OCI_DEFAULT))
+	  {
+		 return false;
+	  }
+	  $tab = oci_fetch_array ($cur , 0);
+	  if($tab == false)
+	  {
+		 return false;
+	  }
+	  return true;
+   }
 
-	  function CodePaysExiste($conn,$codePays)
+   function CodePaysExiste($conn,$codePays)
+   {
+	  if(empty($conn))
 	  {
-		 if(empty($conn))
-		 {
-			return false;
-		 }
-		 $cur = oci_parse($conn,'select 1 from  '.TDF_PAYS.' where upper(c_pays) = upper(:code)');
-		 if (!$cur)
-		 {
-			return false;
-		 }
-		 oci_bind_by_name($cur, ":code", $codePays);
-		 if(!oci_execute($cur, OCI_DEFAULT))
-		 {
-			return false;
-		 }
-		 $tab = oci_fetch_array ($cur , 0);
-		 if($tab == false)
-		 {
-			return false;
-		 }
-		 return true;
+		 return false;
 	  }
+	  $cur = oci_parse($conn,'select 1 from  '.TDF_PAYS.' where upper(c_pays) = upper(:code)');
+	  if (!$cur)
+	  {
+		 return false;
+	  }
+	  oci_bind_by_name($cur, ":code", $codePays);
+	  if(!oci_execute($cur, OCI_DEFAULT))
+	  {
+		 return false;
+	  }
+	  $tab = oci_fetch_array ($cur , 0);
+	  if($tab == false)
+	  {
+		 return false;
+	  }
+	  return true;
+   }
 
-	  function NomPaysExiste($conn,$nomPays)
+   function NomPaysExiste($conn,$nomPays)
+   {
+	  if(empty($conn))
 	  {
-		 if(empty($conn))
-		 {
-			return false;
-		 }
-		 $cur = oci_parse($conn,'select 1 from '.TDF_PAYS.' where upper(NOM) = upper(:nom)');
-		 if (!$cur)
-		 {
-			return false;
-		 }
-		 oci_bind_by_name($cur, ":nom", $nomPays);
-		 if(!oci_execute($cur, OCI_DEFAULT))
-		 {
-			return false;
-		 }
-		 $tab = oci_fetch_array ($cur , 0);
-		 if($tab == false)
-		 {
-			return false;
-		 }
-		 return true;
+		 return false;
 	  }
+	  $cur = oci_parse($conn,'select 1 from '.TDF_PAYS.' where upper(NOM) = upper(:nom)');
+	  if (!$cur)
+	  {
+		 return false;
+	  }
+	  oci_bind_by_name($cur, ":nom", $nomPays);
+	  if(!oci_execute($cur, OCI_DEFAULT))
+	  {
+		 return false;
+	  }
+	  $tab = oci_fetch_array ($cur , 0);
+	  if($tab == false)
+	  {
+		 return false;
+	  }
+	  return true;
+   }
 
-	  function insertion_pays($conn,$nom, $code_tdf, $code_pays)
+   function insertion_pays($conn,$nom, $code_tdf, $code_pays)
+   {
+	  if(empty($conn))
 	  {
-		 if(empty($conn))
-		 {
-			return false;
-		 }
-		 $cur = oci_parse($conn,'insert into '.TDF_PAYS.'(code_tdf,c_pays,nom,compte_oracle,date_insert) values (upper(:code_tdf),upper(:code_pays),upper(:nom),\'ETU2_42\',sysdate)');
-		 if (!$cur)
-		 {
-			return false;
-		 }
-		 oci_bind_by_name($cur, ":code_tdf", $code_tdf);
-		 oci_bind_by_name($cur, ":code_pays", $code_pays);
-		 oci_bind_by_name($cur, ":nom", $nom);
-		 if(!oci_execute($cur, OCI_DEFAULT))
-		 {
-			return false;
-		 }
-		 $commit = oci_commit($conn);
-		 if( ! $commit)
-		 {
-			return false;
-		 }
-		 return true;
+		 return false;
 	  }
+	  $cur = oci_parse($conn,'insert into '.TDF_PAYS.'(code_tdf,c_pays,nom,compte_oracle,date_insert) values (upper(:code_tdf),upper(:code_pays),upper(:nom),\'ETU2_42\',sysdate)');
+	  if (!$cur)
+	  {
+		 return false;
+	  }
+	  oci_bind_by_name($cur, ":code_tdf", $code_tdf);
+	  oci_bind_by_name($cur, ":code_pays", $code_pays);
+	  oci_bind_by_name($cur, ":nom", $nom);
+	  if(!oci_execute($cur, OCI_DEFAULT))
+	  {
+		 return false;
+	  }
+	  $commit = oci_commit($conn);
+	  if( ! $commit)
+	  {
+		 return false;
+	  }
+	  return true;
+   }
 
-	  function listingPays($conn)
-	  {
-		 $re = ExecuterRequete($conn,"select nom,code_tdf,c_pays from ".TDF_PAYS);
-		 AfficherDonnee($re);
-	  }
-   ?>
+   function listingPays($conn)
+   {
+	  $re = ExecuterRequete($conn,"select nom,code_tdf,c_pays from ".TDF_PAYS);
+	  AfficherDonnee($re);
+   }
+?>
